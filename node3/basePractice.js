@@ -65,10 +65,40 @@ const age = 30;*/
 除了添加let和const命令，后面章节还会提到，另外两种声明变量的方法：import命令和class命令。所以，ES6
 一共有6种声明变量的方法。*/
 
-var a = 1;
+/*var a = 1;
 // 如果在 Node 的 REPL 环境，可以写成 global.a
 // 或者采用通用方法，写成 this.a
 window.a // 1
 
 let b = 1;
-window.b // undefined
+window.b // undefined*/
+
+/*
+var命令和function命令声明的全局变量，依旧是顶层对象的属性；另一方面规定，let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。
+也就是说，从ES6开始，全局变量将逐步与顶层对象的属性脱钩。*/
+
+
+// 关于在浏览器中获取global作为顶层对象的两个文案
+// 方法一
+(typeof window !== 'undefined'
+    ? window
+    : (typeof process === 'object' &&
+        typeof require === 'function' &&
+        typeof global === 'object')
+        ? global
+        : this);
+
+// 方法二
+var getGlobal = function () {
+    if (typeof self !== 'undefined') {
+        return self;
+    }
+    if (typeof window !== 'undefined') {
+        return window;
+    }
+    if (typeof global !== 'undefined') {
+        return global;
+    }
+    throw new Error('unable to locate global object');
+};
+
