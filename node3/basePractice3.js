@@ -17,4 +17,4 @@ Object.defineProperty(a, mySymbol, { value: 'Hello!' });
 
 // 以上写法都得到同样结果
 // a[mySymbol] // "Hello!"
-console.log(a[mySymbol])
+console.log(a[mySymbol]);
